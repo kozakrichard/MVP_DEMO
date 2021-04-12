@@ -1,0 +1,105 @@
+.NavContainer{
+    background-color:rgba(0,0,0,0.5);
+    height: 70px;
+    top: 0;
+    width: 100vw;
+    position: absolute;
+    z-index: 10;
+    align-items: center;
+    display: flex;
+    flex-direction: row
+}
+
+.BPMwrapper{
+    z-index: 20;
+    display: flex;
+    flex-direction: row;
+    color: red;
+    align-items: center;
+    position: absolute;
+    left:28%;
+    transform: translateX(-50%);
+}
+
+.Logo{
+    width :30px;
+    padding-left: 5em;
+    left: 0;
+}
+
+.nameLogo{
+    font-size: 1.2rem;
+    color: white;
+    padding-left: .5em;
+    font-weight: 300;
+}
+
+.BPMcount{
+    color:white;
+    background: transparent;
+    border: 2px solid #8D74C5;
+    border-radius: 6px;
+    padding: 5px 20px 5px 20px;
+}
+
+.bpmBtn{
+    background: transparent;
+    border-radius: 6px;
+    border: 2px solid #8D74C5;
+    color: #8D74C5;
+    font-size: 1.4em;
+    margin-right: .5em;
+    opacity:1;
+    margin-left: .5em;
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.bpmBtn:hover{
+    color:#8D74C5;
+    background: rgb(255, 241, 255);
+    cursor: pointer;
+    border: none;
+}
+
+.generateBtn{
+    background: transparent;
+    border-radius: 6px;
+    border: 2px solid #8D74C5;
+    color: #c6c1d1;
+    font-size: 1em;
+    margin-right: .5em;
+    opacity:1;
+    margin-left: auto;
+    margin-right: 5%;
+    padding: 13px 10px 13px 10px;
+    right:0;
+}
+.generateBtn:hover{
+    color:#8D74C5;
+    background: rgb(255, 241, 255);
+    cursor: pointer;
+    border: none;
+}
+
+.playbtn{
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    background: transparent;
+    border-radius: 6px;
+    color: #c6c1d1;
+    border: 2px solid #8D74C5;
+    font-size: 1em;
+    padding: 10px 10px 10px 10px;
+}
+
+.playbtn:hover{
+    color:#8D74C5;
+    background: rgb(255, 241, 255);
+    cursor: pointer;
+    border: none;
+}

@@ -1,0 +1,156 @@
+
+
+.piano-roll-landing-container{
+    width:100vw;
+    /* height:max(680px,100vh); */
+    height:710px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index:1;
+    overflow: hidden;
+    margin-top:30px;
+
+}
+
+.piano-roll-container{
+    width:968px;
+    height:639px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 0.5em;
+    background:black;
+    flex-grow: 0;
+    box-shadow: 0.2em 0.4em 4em black;
+
+}
+
+.piano-roll-container--scrollable{
+    display: inherit;
+    flex-direction: inherit;
+    width:100%;
+    height:100%;
+    overflow-y:scroll;
+    overflow-x: hidden;
+}
+
+.piano-roll-row-container,
+.piano-roll-col-container{
+    width:min-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+
+}
+
+.piano-roll-row-container:last-child{
+    margin-bottom:unset
+}
+
+.piano-roll-row-label{
+    display: flex;
+    width:12em;
+    height:3em;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(143, 143, 143);
+    flex-shrink: 0;
+    color:black;
+    cursor: default;
+    margin-bottom:1px;
+}
+.sharp-color{
+    background-color:rgb(49, 49, 49) !important;
+    color:white;
+}
+
+.piano-roll-row-label > span{
+    text-transform: uppercase;
+}
+
+
+.piano-roll-col-label,
+.piano-roll-cell{
+    display: inline-block;
+    flex-shrink: 0;
+    width:6em;
+    height: 3em;
+    background-color: rgb(68, 68, 68);
+    margin:0 0 1px 1px;
+    cursor: pointer;
+    color:white;
+}
+
+
+.piano-roll-cell:hover{
+    opacity: 0.8 !important;
+}
+
+.piano-roll-col-label{
+    position: sticky;
+    background-color:rgb(49, 49, 49);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+
+/* .piano-roll-col-label:nth-child(even),
+.piano-roll-cell:nth-child(even){
+    background-color: rgb(68, 68, 68);
+    color:black
+} */
+
+.piano-roll-col-container:nth-child(4n+1) .piano-roll-cell{
+    opacity: 0.85;
+}
+
+.blue{
+    background-color:#8D74C5 !important;
+    transition: all 100ms ease-in;
+    transform:scale(0.97);
+   
+}
+
+.purple{
+    background-color: purple !important;
+}
+
+.tes{
+    margin:0;
+    color:white;
+}
+/* const notes = ['B3', 'A#3','A3','G#3','G3','F#3','F3','E3','D#3','D3','C#3','C3']; */
+
+
+.btn {
+    background: transparent;
+    border: 2px solid #8D74C5;
+    border-radius: 6px;
+    color: rgb(255, 241, 255);
+    outline: none;
+    padding: 15px 22px;
+    text-align: center;
+    font-size: 1.4em;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0px 15px;
+}
+.btn:hover{
+    color:#8D74C5;
+    background: rgb(255, 241, 255);
+    cursor: pointer;
+    border: 2px solid rgb(255, 241, 255);
+
+}
+
+.clickables {
+    float: right;
+    margin-left:40%;
+    margin-bottom: 25px;
+    display:flex;
+}

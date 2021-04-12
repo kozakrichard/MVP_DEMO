@@ -1,0 +1,136 @@
+    return (
+      // Top level component must be Song, with Tracks nested inside
+      <Song bpm={90} isPlaying={true}>
+        <Track
+          // Array of several types
+          steps={[
+            // Note in string format
+            'C3',
+            // Object with note name and duration
+            { name: 'C3', duration: 0.5 },
+            { name: 'D3', duration: 0.5 },
+            // Array of strings for chords
+            ['C3', 'G3'],
+            null,
+            null,
+            // Array of objects for chords
+            [
+              { name: 'C3', duration: 0.5 },
+              { name: 'G3', duration: 0.5 },
+            ],
+            null,
+          ]}
+          volume={80}
+          pan={0}
+          // Callback for every tick
+          onStepPlay={(step, index) => {
+            index += step;
+          }}
+        >
+          <Instrument type="synth" />
+          {/* Add effects chain here */}
+          <Effect type="feedbackDelay" />
+          <Effect type="distortion" />
+        </Track>
+
+        <Track>
+          <Instrument
+            type="sampler"
+            samples={{
+              C3: 'path/to/kick.mp3',
+              D3: 'path/to/snare.mp3',
+              E3: 'path/to/hihat.mp3',
+            }}
+            // Add some notes here to play
+            notes={[{ name: 'C3' }]}
+            onLoad={(buffers) => {
+              // Runs when all samples are loaded
+            }}
+          />
+        </Track>
+      </Song>
+    );
+  };
+
+
+
+
+
+  ----------------------------------------------------------------      <- Initial State?
+
+    const [steps, setSteps] = useState([
+      null,
+      null,
+      null,
+      null,   
+      null,
+      null,
+      null,
+      null,
+    ]);
+
+
+
+
+
+  <PianoRoll
+        currentStepIndex={currentStepIndex}
+        onClick={(steps) => setSteps(steps)}
+  />
+
+
+
+
+  ///////////////////////////////////////////////////////////////////
+  Step Sequencer
+  import React, { Component, useState } from 'react';
+import { render } from 'react-dom';
+import { Song, Track, Instrument } from 'reactronica';
+import ReactDOM from 'react-dom'
+
+// Simplified Piano Roll
+const PianoRollExample = () => {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentStepIndex, setCurrentStepIndex] = useState(0);
+    const [steps, setSteps] = useState([
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+    ])
+    return (
+        <>
+            <button onClick={() => setIsPlaying(!isPlaying)}>
+                {!isPlaying ? 'Play' : 'Stop'}
+            </button>
+
+            {/* Reactronica Components */}
+            <Song isPlaying={isPlaying}>
+                <Track
+                    steps={steps}
+                    // Callback triggers on every step
+                    onStepPlay={(stepNotes, index) => {
+                        setCurrentStepIndex(index);
+                    }}
+                >
+                    <Instrument type="polySynth" />
+                </Track>
+            </Song>
+            <section className="piano-roll-contianer">
+
+            </section>
+
+        </>
+    )
+};
+
+export default PianoRollExample;
+
+
+
+
+/// Song props:     bpm - given this bpm, component iterates through matrix --- index gets updated at every tick 
