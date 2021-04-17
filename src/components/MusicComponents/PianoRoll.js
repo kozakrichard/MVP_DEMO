@@ -91,6 +91,11 @@ export default function PianoRoll(props) {
         localStorage.setItem('CURRENT_STEPS', JSON.stringify(steps.current));
     };
 
+    const handleInstrument = () => {
+        console.log("changing instrument now");
+    }
+
+
     const decrementColumn = () =>{
         props.setPlay(false);
         var t = document.querySelector('.piano-roll-container--scrollable');
@@ -308,6 +313,7 @@ export default function PianoRoll(props) {
             <div className="piano-roll-landing-container">
                 <p className="tes"></p>
                 <div className="clickables">
+                    <button class="btn" onClick={handleInstrument}>Change Instrument</button>
                     <button class="btn" onClick={handleClear}>Clear</button>
                     <button class="btn" onClick={handleRandom}>Generate</button>
                     {/* <button onClick={decrementColumn}> 
