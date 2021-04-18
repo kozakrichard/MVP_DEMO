@@ -5,10 +5,13 @@ import './Home.css'
 import Nav from './nav.js';
 import NavSide from './navSide';
 import axios from 'axios';
+import InstrumentForm from './InstrumentForm.js'
 
 
 const Home = () => {
     const [BPM, setBPM] = useState(75);
+
+
 
     const handleIncrement = () => {
         if (BPM < 200) {
@@ -66,6 +69,7 @@ const Home = () => {
 
     return (
         <>
+            {/*<Home instrument={instrument}/>*/}
             <Nav increment={handleIncrement} decrement={handleDecrement} bpm={BPM} tog={updateToggle} play={isPlaying} setPlay={setIsPlaying} sendMitty={sendData} />
             <NavSide handleVol={handleVolume} vol={volume} handlePan={handlePan} pan={pan} />
             <div className='Container'>

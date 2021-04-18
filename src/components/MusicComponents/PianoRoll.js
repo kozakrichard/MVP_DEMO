@@ -3,6 +3,7 @@ import { Song, Track, Instrument } from 'reactronica';
 import './PianoRoll.css';
 import axios from 'axios';
 // import ClearGrid from './clearGrid.js'
+import InstrumentForm from '../InstrumentForm.js'
 
 export default function PianoRoll(props) {
     var previousStepIndex = useRef(1);
@@ -313,7 +314,7 @@ export default function PianoRoll(props) {
             <div className="piano-roll-landing-container">
                 <p className="tes"></p>
                 <div className="clickables">
-                    <button class="btn" onClick={handleInstrument}>Change Instrument</button>
+                    {/*<button class="btn" onClick={handleInstrument}>Change Instrument</button>*/}
                     <button class="btn" onClick={handleClear}>Clear</button>
                     <button class="btn" onClick={handleRandom}>Generate</button>
                     {/* <button onClick={decrementColumn}> 
@@ -337,11 +338,12 @@ export default function PianoRoll(props) {
                             console.log(`prev.current:  ${previousStepIndex.current}, track index: ${index}, calc: ${(index + (numOfCol.current - 2)) % (numOfCol.current - 1)} numOfCol: ${numOfCol.current}`)
                             previousStepIndex.current = (index + (numOfCol.current - 1)) % (numOfCol.current);
                             console.log(`num of col: ${numOfCol.current}`)
+                            //console.log({props.instrument});
                         }}
                         volume={props.vol}
                         pan={props.pan}
                     >
-                        <Instrument type="polySynth" />
+                        <Instrument type= {props.instrument}/>
                     </Track>
                 </Song>
 
