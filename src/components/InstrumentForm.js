@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './InstrumentForm.css';
-//import PianoRoll from './MusicComponents/PianoRoll';
-import PianoRoll from './MusicComponents/PianoRoll.js'
+import PianoRoll from './MusicComponents/PianoRoll.js';
 //import Home from './Home.js';
 
 class InstrumentForm extends React.Component {
@@ -42,7 +41,7 @@ class InstrumentForm extends React.Component {
               <input type="submit" value="Apply" />
             </form>
           </div>
-          {/*<PianoRoll value = {this.state.value} />*/}
+          {/*<PianoRoll value = {this.value} />*/}
           {/*<Home value = {this.state.value} />*/}
         </div>
       );

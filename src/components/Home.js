@@ -5,10 +5,12 @@ import './Home.css'
 import Nav from './nav.js';
 import NavSide from './navSide';
 import axios from 'axios';
-import InstrumentForm from './InstrumentForm.js'
+import InstrumentForm from './InstrumentForm.js';
+import Video from './Video.js';
 
 
 const Home = () => {
+
     const [BPM, setBPM] = useState(75);
 
 
@@ -73,9 +75,10 @@ const Home = () => {
             <Nav increment={handleIncrement} decrement={handleDecrement} bpm={BPM} tog={updateToggle} play={isPlaying} setPlay={setIsPlaying} sendMitty={sendData} />
             <NavSide handleVol={handleVolume} vol={volume} handlePan={handlePan} pan={pan} />
             <div className='Container'>
-                <div className='videoContainer' >
-                    <video className='Video' autoPlay loop muted src={Night} type='video/mp4' />
-                </div>
+                {/*<div className='videoContainer' >
+                    <video className='Video' ref="vidRef" autoPlay loop muted src={Night} type='video/mp4' />
+    </div>*/}
+                <Video />
                 <PianoRoll bpm={BPM} vol={volume} pan={pan} togg={toggle} play={isPlaying} setPlay={setIsPlaying} />
             </div>
         </>

@@ -343,7 +343,8 @@ export default function PianoRoll(props) {
                         volume={props.vol}
                         pan={props.pan}
                     >
-                        <Instrument type= {props.instrument}/>
+                        {/*<Instrument type= {this.props.value}/>*/}
+                        <Instrument type = "amSynth"/>
                     </Track>
                 </Song>
 

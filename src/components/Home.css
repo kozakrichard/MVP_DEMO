@@ -26,3 +26,9 @@
     object-fit: cover;
     z-index: 1;
 }
+
+.videoButton{
+    width: 100%;
+    margin-top: -1000px;
+    margin-left: 500px;
+}
