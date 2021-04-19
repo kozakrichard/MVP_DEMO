@@ -1,3 +1,14 @@
+/*
+STATUS UPDATE
+In the process of attempting to switch the functionality of the InstrumentForm into Hooks within
+PianoRolljs...
+Current status: "Object" unidentified upon switching to different instrument. 
+We could be very close to having it figured out...
+Need help from someone who knows React a little bit better.
+Upon successful implementation.. Recommend deleting InstrumentForm.js and .css and
+Move InstrumentForm into NavSide location...
+*/
+
 import React, {Component} from 'react';
 import './InstrumentForm.css';
 import PianoRoll from './MusicComponents/PianoRoll.js';
@@ -24,6 +35,7 @@ class InstrumentForm extends React.Component {
         value: this.state.value
       });
       alert('You changed to: ' + this.state.value);
+      this.props.callbackFromInstrumentForm(this.state.value);
     }
   
     render() {
@@ -41,7 +53,7 @@ class InstrumentForm extends React.Component {
               <input type="submit" value="Apply" />
             </form>
           </div>
-          {/*<PianoRoll value = {this.value} />*/}
+          {/*<PianoRoll instrument = {this.state.value} />*/}
           {/*<Home value = {this.state.value} />*/}
         </div>
       );

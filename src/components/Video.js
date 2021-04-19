@@ -1,3 +1,9 @@
+/*
+Component works well, need to find a way to place the Pause/Play button to be
+OVER the video.
+Currently the button is blocked by the video when expanded to 100% of screen size.
+*/
+
 import React, {Component} from "react";
 import Night from '../sources/night.mp4';
 import './Home.css';
@@ -5,7 +11,8 @@ import './Home.css';
 class Video extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {playing: false};}
+        this.state = {playing: false};
+    }
 
     componentDidMount = () => {
     this.playVideo();
@@ -21,15 +28,13 @@ class Video extends React.Component {
     }
 
     playVideo = () => {
-    // You can use the play method as normal on your video ref
-    this.video.play();
-    this.setState({playing: true});
+        this.video.play();
+        this.setState({playing: true});
     };
 
     pauseVideo = () => {
-    // Pause as well
-    this.video.pause();
-    this.setState({playing: false});
+        this.video.pause();
+        this.setState({playing: false});
     };
 
     render = () => {
