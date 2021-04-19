@@ -3,15 +3,26 @@ import { Song, Track, Instrument } from 'reactronica';
 import './PianoRoll.css';
 import axios from 'axios';
 // import ClearGrid from './clearGrid.js'
+import InstrumentForm from '../InstrumentForm.js'
 
 export default function PianoRoll(props) {
+    const [instrument, setState] = useState('polySynth');
+    
+ /*   this.state = {
+        instrumentFromForm: "polySynth"
+    };    
+
+
+    myCallback = (instrument) => {
+        this.setState({ instrumentFromForm: instrument });
+    }
+*/
     var previousStepIndex = useRef(1);
     const numOfCol = useRef(0);
     const numOfCells = useRef(0);
     const [currentStepIndex, setCurrentStepIndex] = useState(-1);
     const notes = ['C8' , 'B7' , 'A#7' , 'A7' , 'G#7' , 'G7' , 'F#7' , 'F7' , 'E7' , 'D#7' , 'D7' , 'C#7' , 'C7' , 'B6' , 'A#6' , 'A6' , 'G#6' , 'G6' , 'F#6' , 'F6' , 'E6' , 'D#6' , 'D6' , 'C#6' , 'C6' , 'B5' , 'A#5' , 'A5' , 'G#5' , 'G5' , 'F#5' , 'F5' , 'E5' , 'D#5' , 'D5' , 'C#5' , 'C5' , 'B4' , 'A#4' , 'A4' , 'G#4' , 'G4' , 'F#4' , 'F4' , 'E4' , 'D#4' , 'D4' , 'C#4' , 'C4' , 'B3' , 'A#3' , 'A3' , 'G#3' , 'G3' , 'F#3' , 'F3' , 'E3' , 'D#3' , 'D3' , 'C#3' , 'C3' , 'B2' , 'A#2' , 'A2' , 'G#2' , 'G2' , 'F#2' , 'F2' , 'E2' , 'D#2' , 'D2' , 'C#2' , 'C2' , 'B1' , 'A#1' , 'A1' , 'G#1' , 'G1' , 'F#1' , 'F1' , 'E1' , 'D#1' , 'D1' , 'C#1' , 'C1' , 'B0' , 'A#0' , 'A0'];
 
-    
     const steps = useRef([
         [],
         [],
@@ -90,6 +101,29 @@ export default function PianoRoll(props) {
         console.log(`randomize: ${steps.current[0]}`);
         localStorage.setItem('CURRENT_STEPS', JSON.stringify(steps.current));
     };
+
+    const handleInstrument = () => {
+        console.log({instrument});
+        alert("changed to " + {instrument});
+    }
+
+    /*
+    onChange = (e) => {
+        this.setState({instrument: e.target.instrument});
+        alert("you changed to " + this.state.instrument);
+        //alert(this.state.value);
+      }
+/*
+    setInstrument = (e) => {
+        e.preventDefault();
+        
+        this.setState({
+          instrument: this.state.instrument
+        });
+        alert('You changed to: ' + this.state.instrument);
+      //  this.props.callbackFromInstrumentForm(this.state.value);
+    }
+*/
 
     const decrementColumn = () =>{
         props.setPlay(false);
@@ -305,9 +339,22 @@ export default function PianoRoll(props) {
 
     return (
         <>
+        {/*<InstrumentForm callbackFromInstrumentForm={this.myCallback}/>*/}
             <div className="piano-roll-landing-container">
                 <p className="tes"></p>
                 <div className="clickables">
+                    <div className = "instrumentChanger">
+                        <form>
+                        <label>
+                            <select onChange={e=> setState(e.target.instrument)}>
+                                <option value="polySynth">polySynth</option>
+                                <option value="amSynth">amSynth</option>
+                            </select>
+                        </label>
+                        </form>
+                    </div>
+
+                    <button class="btn" onClick={handleInstrument}>Change Instrument</button>
                     <button class="btn" onClick={handleClear}>Clear</button>
                     <button class="btn" onClick={handleRandom}>Generate</button>
                     {/* <button onClick={decrementColumn}> 
@@ -331,11 +378,13 @@ export default function PianoRoll(props) {
                             console.log(`prev.current:  ${previousStepIndex.current}, track index: ${index}, calc: ${(index + (numOfCol.current - 2)) % (numOfCol.current - 1)} numOfCol: ${numOfCol.current}`)
                             previousStepIndex.current = (index + (numOfCol.current - 1)) % (numOfCol.current);
                             console.log(`num of col: ${numOfCol.current}`)
+                            //console.log({props.instrument});
                         }}
                         volume={props.vol}
                         pan={props.pan}
                     >
-                        <Instrument type="polySynth" />
+                        {/*<Instrument type= {instrumentFromForm}/>*/}
+                        <Instrument type = {instrument}/>
                     </Track>
                 </Song>
 

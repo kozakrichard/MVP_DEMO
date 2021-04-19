@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './navSide.css';
-
+import InstrumentForm from './InstrumentForm.js'
 
 
 const getVol = (vol) =>
@@ -25,9 +25,22 @@ const getPan = (pan) =>
     }
 }
 
+const getInstru = (synthInstrument) =>
+{
+    if (synthInstrument === 'polySynth')
+    {
+        return 'polySynth';
+    } 
+    else if (synthInstrument === 'duoSynth')
+    {
+        return 'duoSynth';
+    } 
+}
+
 const NavSide = (props) => {
     const [inValue, setInValue] = useState(-50);
     const [panValue, setPanValue] = useState(0);
+//    const [instruCurrent, setInstruCurrent] = useState('polySynth');
 
     // if (swidge)
     // {
@@ -82,7 +95,24 @@ const NavSide = (props) => {
                         </div>
                     </div>
                 </div>
+                <InstrumentForm />
+            {/*    
+                <div className = 'instrument changer'>
+                    <div className = "changer">Instrument: {getInstru(instruCurrent)}</div>
+                        <select name="instruments" id="synths">
+                            <option value="polySynth">polySynth</option>
+                            <option value="amSynth">amSynth</option>
+                        </select>
+                        console.log({instruCurrent});
+                        onChange={(e => {
+                            props.handleInstru(e.target.value);
+                            setInstruCurrent(e.target.value);
+                        })}
+                    value = {instruCurrent}
+                </div>
+                */}
             </div> 
+                    
         </>
     )
 }
