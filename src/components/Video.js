@@ -1,12 +1,6 @@
-/*
-Component works well, need to find a way to place the Pause/Play button to be
-OVER the video.
-Currently the button is blocked by the video when expanded to 100% of screen size.
-*/
-
 import React, {Component} from "react";
 import Night from '../sources/night.mp4';
-import './Home.css';
+import './Home.css';                        //styling for video and background button in Home.css
 
 class Video extends React.Component {
     constructor(props) {
