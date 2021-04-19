@@ -28,8 +28,8 @@
 }
 
 .videoButton:hover{
-    background:blueviolet;
-    color: white;
+    color:#8D74C5;
+    background: rgb(255, 241, 255);
 }
 
 .videoButton{
@@ -38,11 +38,19 @@
     width: 100%;
     margin-left: 300px;
     z-index: 5;
+    color:white;
+    background: transparent;
+    border-radius: 6px;
+    border: 2px solid #8D74C5;
+    font-size: 1em;
+    opacity:1;
 }
 
-.playbuttons{
+.playbuttons{  
     position:relative;
     z-index:5;
-    margin-left: 1000px;
+    margin-left: 1070px;
+    margin-top:350px;
     width:10%;
+    padding: 13px 10px 13px 10px;
 }

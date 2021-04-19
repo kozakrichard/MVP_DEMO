@@ -2,53 +2,57 @@ import React, {Component} from "react";
 import Night from '../sources/night.mp4';
 import './Home.css';
 
-    class Video extends React.Component {
-      componentDidMount = () => {
-        this.playVideo();
-      };
+class Video extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {playing: false};}
 
-      componentWillUnmount = () => {
-          this.pauseVideo();
-      };
+    componentDidMount = () => {
+    this.playVideo();
+    
+    };
 
-      getVid = el => {
-          this.video = el
-      }
+    componentWillUnmount = () => {
+        this.pauseVideo();
+    };
 
-      playVideo = () => {
-        // You can use the play method as normal on your video ref
-        this.video.play();
-      };
-
-      pauseVideo = () => {
-        // Pause as well
-        this.video.pause();
-      };
-
-      render = () => {
-        return (
-          <div className = "videoContainer">
-            <video className = "Video"
-                autoPlay
-                loop
-                muted
-                ref={this.getVid}
-                src={Night}
-                type="video/mp4"
-
-            />
-
-            <div className = "playbuttons">
-              <button className = "videoButton" onClick={this.playVideo}>
-                Play!
-              </button>
-              <button className = "videoButton" onClick={this.pauseVideo}>
-                Pause!
-              </button>
-            </div>
-          </div>
-        );
-      };
+    getVid = el => {
+        this.video = el
     }
 
- export default Video;
+    playVideo = () => {
+    // You can use the play method as normal on your video ref
+    this.video.play();
+    this.setState({playing: true});
+    };
+
+    pauseVideo = () => {
+    // Pause as well
+    this.video.pause();
+    this.setState({playing: false});
+    };
+
+    render = () => {
+        return (
+            <div className = "videoContainer">
+                <video className = "Video"
+                    autoPlay
+                    loop
+                    muted
+                    ref={this.getVid}
+                    src={Night}
+                    type="video/mp4"
+                />
+
+                <div className = "playbuttons">
+                    <button className = "videoButton" onClick={this.state.playing ? this.pauseVideo : this.playVideo}>
+                        {!this.state.playing ? 'Play Background' : 'Pause Background'}
+                    </button>
+
+                </div>
+            </div>
+        );
+    };
+}
+
+export default Video;
