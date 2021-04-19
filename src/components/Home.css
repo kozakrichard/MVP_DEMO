@@ -21,14 +21,28 @@
 
 .Video{
     width: 100%;
-    height: 100%;
+    height: 50%;
     -o-object-fit: cover;
     object-fit: cover;
     z-index: 1;
 }
 
+.videoButton:hover{
+    background:blueviolet;
+    color: white;
+}
+
 .videoButton{
+    position:relative;
+    display:inline-block;
     width: 100%;
-    margin-top: -1000px;
-    margin-left: 500px;
+    margin-left: 300px;
+    z-index: 5;
+}
+
+.playbuttons{
+    position:relative;
+    z-index:5;
+    margin-left: 1000px;
+    width:10%;
 }

@@ -11,15 +11,18 @@ import './Home.css';
           this.pauseVideo();
       };
 
+      getVid = el => {
+          this.video = el
+      }
 
       playVideo = () => {
         // You can use the play method as normal on your video ref
-        this.refs.vidRef.play();
+        this.video.play();
       };
 
       pauseVideo = () => {
         // Pause as well
-        this.refs.vidRef.pause();
+        this.video.pause();
       };
 
       render = () => {
@@ -29,13 +32,13 @@ import './Home.css';
                 autoPlay
                 loop
                 muted
-                ref="vidRef"
+                ref={this.getVid}
                 src={Night}
                 type="video/mp4"
 
             />
 
-            <div>
+            <div className = "playbuttons">
               <button className = "videoButton" onClick={this.playVideo}>
                 Play!
               </button>
