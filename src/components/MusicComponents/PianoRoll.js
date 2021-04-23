@@ -3,11 +3,13 @@ import { Song, Track, Instrument } from 'reactronica';
 import './PianoRoll.css';
 import axios from 'axios';
 // import ClearGrid from './clearGrid.js'
-import InstrumentForm from '../InstrumentForm.js'
+import InstrumentForm from '../InstrumentForm.js';
+import {useForm} from 'react-hook-form';
 
 export default function PianoRoll(props) {
-    const [instrument, setState] = useState('polySynth');
-    
+
+    const [data, setState] = useState({data: {instrument: "monoSynth"}});
+    const {register, handleSubmit} = useForm();
  /*   this.state = {
         instrumentFromForm: "polySynth"
     };    
@@ -36,8 +38,14 @@ export default function PianoRoll(props) {
 
     localStorage.setItem('CURRENT_STEPS', JSON.stringify(steps.current));
 
-    
+    const onSubmit = (data) => {
+        setState({data});
+        console.log(data);
+    }
 
+    const componentWillMount = () => {
+        setState({data: "monoSynth"});
+    }
 
     const hello = (e) => {
         return e;
@@ -103,8 +111,8 @@ export default function PianoRoll(props) {
     };
 
     const handleInstrument = () => {
-        console.log({instrument});
-        alert("changed to " + {instrument});
+        console.log(data.data.instrument);
+        //alert("changed to " + {data});
     }
 
     /*
@@ -344,15 +352,26 @@ export default function PianoRoll(props) {
                 <p className="tes"></p>
                 <div className="clickables">
                     <div className = "instrumentChanger">
-                        <form>
+                        <form id = "instrumentForm" onSubmit = {handleSubmit(onSubmit)}>
                         <label>
-                            <select onChange={e=> setState(e.target.instrument)}>
-                                <option value="polySynth">polySynth</option>
+                            Select Instrument:
+                            <select {...register('instrument')}>
+                                <option value="monoSynth">monoSynth</option>
                                 <option value="amSynth">amSynth</option>
+                                <option value="duoSynth">duoSynth</option>
+                                <option value="fmSynth">fmSynth</option>
+                                <option value="membraneSynth">membraneSynth</option>
+                                <option value="metalSynth">metalSynth</option>
+                                <option value="pluckSynth">pluckSynth</option>
+                                <option value="synth">synth</option>
                             </select>
                         </label>
+                        <input type="submit" value="Submit"/>
                         </form>
                     </div>
+
+                    {/*window.onload.document.getElementById('instrumentForm').submit()}
+                    {console.log(data.data.instrument)*/}
 
                     <button class="btn" onClick={handleInstrument}>Change Instrument</button>
                     <button class="btn" onClick={handleClear}>Clear</button>
@@ -375,16 +394,17 @@ export default function PianoRoll(props) {
                         onStepPlay={(stepNotes, index) => {
 
                             setCurrentStepIndex(index);
-                            console.log(`prev.current:  ${previousStepIndex.current}, track index: ${index}, calc: ${(index + (numOfCol.current - 2)) % (numOfCol.current - 1)} numOfCol: ${numOfCol.current}`)
+                            //console.log(`prev.current:  ${previousStepIndex.current}, track index: ${index}, calc: ${(index + (numOfCol.current - 2)) % (numOfCol.current - 1)} numOfCol: ${numOfCol.current}`)
                             previousStepIndex.current = (index + (numOfCol.current - 1)) % (numOfCol.current);
-                            console.log(`num of col: ${numOfCol.current}`)
+                            //console.log(`num of col: ${numOfCol.current}`)
+                            console.log(data.data.instrument);
                             //console.log({props.instrument});
                         }}
                         volume={props.vol}
                         pan={props.pan}
                     >
                         {/*<Instrument type= {instrumentFromForm}/>*/}
-                        <Instrument type = {instrument}/>
+                        <Instrument type = {data.data.instrument}/>
                     </Track>
                 </Song>
 
