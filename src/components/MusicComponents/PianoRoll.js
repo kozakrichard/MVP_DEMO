@@ -10,15 +10,7 @@ export default function PianoRoll(props) {
 
     const [data, setState] = useState({data: {instrument: "monoSynth"}});
     const {register, handleSubmit} = useForm();
- /*   this.state = {
-        instrumentFromForm: "polySynth"
-    };    
 
-
-    myCallback = (instrument) => {
-        this.setState({ instrumentFromForm: instrument });
-    }
-*/
     var previousStepIndex = useRef(1);
     const numOfCol = useRef(0);
     const numOfCells = useRef(0);
@@ -109,29 +101,6 @@ export default function PianoRoll(props) {
         console.log(`randomize: ${steps.current[0]}`);
         localStorage.setItem('CURRENT_STEPS', JSON.stringify(steps.current));
     };
-
-    const handleInstrument = () => {
-        console.log(data.data.instrument);
-        //alert("changed to " + {data});
-    }
-
-    /*
-    onChange = (e) => {
-        this.setState({instrument: e.target.instrument});
-        alert("you changed to " + this.state.instrument);
-        //alert(this.state.value);
-      }
-/*
-    setInstrument = (e) => {
-        e.preventDefault();
-        
-        this.setState({
-          instrument: this.state.instrument
-        });
-        alert('You changed to: ' + this.state.instrument);
-      //  this.props.callbackFromInstrumentForm(this.state.value);
-    }
-*/
 
     const decrementColumn = () =>{
         props.setPlay(false);
@@ -347,33 +316,28 @@ export default function PianoRoll(props) {
 
     return (
         <>
-        {/*<InstrumentForm callbackFromInstrumentForm={this.myCallback}/>*/}
             <div className="piano-roll-landing-container">
                 <p className="tes"></p>
                 <div className="clickables">
                     <div className = "instrumentChanger">
                         <form id = "instrumentForm" onSubmit = {handleSubmit(onSubmit)}>
-                        <label>
-                            Select Instrument:
-                            <select {...register('instrument')}>
-                                <option value="monoSynth">monoSynth</option>
-                                <option value="amSynth">amSynth</option>
-                                <option value="duoSynth">duoSynth</option>
-                                <option value="fmSynth">fmSynth</option>
-                                <option value="membraneSynth">membraneSynth</option>
-                                <option value="metalSynth">metalSynth</option>
-                                <option value="pluckSynth">pluckSynth</option>
-                                <option value="synth">synth</option>
-                            </select>
-                        </label>
+                            <label>
+                                Select Instrument:
+                                <select {...register('instrument')}>
+                                    <option value="monoSynth">monoSynth</option>
+                                    <option value="amSynth">amSynth</option>
+                                    <option value="duoSynth">duoSynth</option>
+                                    <option value="fmSynth">fmSynth</option>
+                                    <option value="membraneSynth">membraneSynth</option>
+                                    <option value="metalSynth">metalSynth - </option>
+                                    <option value="pluckSynth">pluckSynth</option>
+                                    <option value="synth">synth</option>
+                                </select>
+                            </label>
                         <input type="submit" value="Submit"/>
                         </form>
                     </div>
 
-                    {/*window.onload.document.getElementById('instrumentForm').submit()}
-                    {console.log(data.data.instrument)*/}
-
-                    <button class="btn" onClick={handleInstrument}>Change Instrument</button>
                     <button class="btn" onClick={handleClear}>Clear</button>
                     <button class="btn" onClick={handleRandom}>Generate</button>
                     {/* <button onClick={decrementColumn}> 
@@ -403,7 +367,6 @@ export default function PianoRoll(props) {
                         volume={props.vol}
                         pan={props.pan}
                     >
-                        {/*<Instrument type= {instrumentFromForm}/>*/}
                         <Instrument type = {data.data.instrument}/>
                     </Track>
                 </Song>
