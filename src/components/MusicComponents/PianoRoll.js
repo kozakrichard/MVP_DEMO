@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Song, Track, Instrument } from 'reactronica';
 import './PianoRoll.css';
 import axios from 'axios';
-// import ClearGrid from './clearGrid.js'
-import InstrumentForm from '../InstrumentForm.js';
 import {useForm} from 'react-hook-form';
 
 export default function PianoRoll(props) {
@@ -334,7 +332,7 @@ export default function PianoRoll(props) {
                                     <option value="synth">synth</option>
                                 </select>
                             </label>
-                        <input type="submit" value="Submit"/>
+                        <input type="submit" value="Apply"/>
                         </form>
                     </div>
 
