@@ -320,19 +320,21 @@ export default function PianoRoll(props) {
                     <div className = "instrumentChanger">
                         <form id = "instrumentForm" onSubmit = {handleSubmit(onSubmit)}>
                             <label>
-                                Select Instrument:
-                                <select {...register('instrument')}>
-                                    <option value="monoSynth">monoSynth</option>
-                                    <option value="amSynth">amSynth</option>
-                                    <option value="duoSynth">duoSynth</option>
-                                    <option value="fmSynth">fmSynth</option>
-                                    <option value="membraneSynth">membraneSynth</option>
-                                    <option value="metalSynth">metalSynth - </option>
-                                    <option value="pluckSynth">pluckSynth</option>
-                                    <option value="synth">synth</option>
-                                </select>
+                                Select Instrument
+                                <div className = "instrumentsContent">
+                                    <select {...register('instrument')}>
+                                        <option value="monoSynth">monoSynth</option>
+                                        <option value="amSynth">amSynth</option>
+                                        <option value="duoSynth">duoSynth</option>
+                                        <option value="fmSynth">fmSynth</option>
+                                        <option value="membraneSynth">membraneSynth</option>
+                                        <option value="metalSynth">metalSynth - NA </option>
+                                        <option value="pluckSynth">pluckSynth</option>
+                                        <option value="synth">synth</option>
+                                    </select>
+                                </div>
                             </label>
-                        <input type="submit" value="Apply"/>
+                        <button class= "applyButton" type="submit" value="Apply">Apply</button>
                         </form>
                     </div>
 
