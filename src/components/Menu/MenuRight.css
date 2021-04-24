@@ -2,11 +2,11 @@
     position: relative;
     width: 200px;
     margin-top: -700px;
-    margin-left: 1340px;
+    margin-left: 1320px;
 
   }
   #header .pro-sidebar {
-    height: 40vh;
+    height: 80vh;
   }
   #header .closemenu {
     color:white;
