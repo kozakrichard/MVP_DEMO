@@ -38,7 +38,7 @@ const MenuRight = () =>{
                 <SidebarHeader>
                 <div className="logotext">
                     {/* small and big change using menucollapse state */}
-                    <p>{menuCollapse ? "Menu" : "Close Menu "}</p>
+                    <p>{menuCollapse ? "Menu" : "Nightingale "}</p>
                     </div>
                     <div className="closemenu" onClick={menuIconClick}>
                         {/* changing menu collapse icon on click */}
