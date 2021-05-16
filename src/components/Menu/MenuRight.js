@@ -15,11 +15,13 @@ import { FiHome, FiLogOut, FiArrowLeftCircle,
     FiArrowRightCircle, FiHeadphones, FiUsers } from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog, BiLogIn } from "react-icons/bi";
+import {AiFillGithub} from "react-icons/ai";
 
 
 const MenuRight = () =>{
 
     const [menuCollapse, setMenuCollapse] = useState(false);
+    const [showMessage, setShowMessage] = useState(false);
 
     const menuIconClick = () => {
         menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
@@ -36,14 +38,14 @@ const MenuRight = () =>{
                 <SidebarHeader>
                 <div className="logotext">
                     {/* small and big change using menucollapse state */}
-                    <p>{menuCollapse ? "Menu" : "Nightingale"}</p>
+                    <p>{menuCollapse ? "Menu" : "Close Menu "}</p>
                     </div>
                     <div className="closemenu" onClick={menuIconClick}>
                         {/* changing menu collapse icon on click */}
                     {menuCollapse ? (
-                        <FiArrowLeftCircle/>
-                    ) : (
                         <FiArrowRightCircle/>
+                    ) : (
+                        <FiArrowLeftCircle/>
                     )}
                     </div>
                 </SidebarHeader>
@@ -52,37 +54,33 @@ const MenuRight = () =>{
                         <MenuItem active={true} icon={<FiHeadphones />}>
                             Home <Link to= "/"/>
                         </MenuItem>
-                        <MenuItem icon={<BiLogIn />}>
-                            Log In <Link to ="/login"/>
-                        </MenuItem>
-                        <MenuItem icon={<FiUsers />}>
-                            Collaborate <Link to="/collaborate"/>
+                        <div class= "collab-btn">
+                            <MenuItem icon={<FiUsers />}
+                                onMouseEnter={() => setShowMessage(true)}
+                                onMouseLeave ={() => setShowMessage(false)}>
+                                Collaborate
+                            </MenuItem>
+                            {showMessage && (
+                                <div>
+                                    Press ALT + T + T to enable user collaboration
+                                </div>
+                                )}
+                        </div>
+                        <MenuItem icon={<AiFillGithub />}>
+                            GitHub <Link to="/github"/>
                         </MenuItem>
                         <MenuItem icon={<FaRegHeart />}>
-                            Your Songs <Link to="usersongs"/>
-                        </MenuItem>
-                        <MenuItem icon={<BiCog />}>
-                            Settings <Link to="settings"/>
+                            About <Link to="/about"/>
                         </MenuItem>
                     </Menu>
                 </SidebarContent>
-                <SidebarFooter>
-                    <Menu iconShape="square">
-                    <MenuItem icon={<FiLogOut />}>Log Out</MenuItem>
-                    </Menu>
-                </SidebarFooter>
             </ProSidebar>
                 <Switch>
-                    <Route path="/collaborate">
-                        <Collaborate />
-                    </Route>
-                    <Route path="/login">
-                        <Login />
-                    </Route>
-                    <Route path="/usersongs">
-                        <UserSongs />
-                    </Route>
-                    <Route path="/settings">
+                    <Route path='/github' component={() => { 
+                        window.location.href = ('https://github.com/nightingale-ai/MVP_DEMO'); 
+                        return null;
+                    }}/>
+                    <Route path="/about">
                         <Settings />
                     </Route>
                 </Switch>
