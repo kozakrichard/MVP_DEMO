@@ -6,6 +6,7 @@ import Nav from './nav.js';
 import NavSide from './navSide';
 import axios from 'axios';
 import Video from './Video.js';
+import MenuRight from './Menu/MenuRight.js';
 
 
 const Home = () => {
@@ -76,6 +77,7 @@ const Home = () => {
                 <Video />
                 <PianoRoll bpm={BPM} vol={volume} pan={pan} togg={toggle} play={isPlaying} setPlay={setIsPlaying} />
             </div>
+            <MenuRight/>
         </>
     )
 }
