@@ -28,6 +28,8 @@ const Nav = (props) => {
                     <button onClick={props.increment} className="bpmBtn">+</button>
                 </div>
                 <button className="generateBtn" onClick={props.sendMitty}>Download</button>
+                <button className="uploadBtn" onClick={props.uploadMitty}>Upload</button>
+                <input type="file" name="file" id="uploadMidiInput" accept=".mid,.midi"></input>
             </div>
         </>
     )

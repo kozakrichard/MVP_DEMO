@@ -71,11 +71,30 @@
     margin-right: .5em;
     opacity:1;
     margin-left: auto;
-    margin-right: 5%;
+    margin-right: 1%;
     padding: 13px 10px 13px 10px;
     right:0;
 }
 .generateBtn:hover{
+    color:#8D74C5;
+    background: rgb(255, 241, 255);
+    cursor: pointer;
+    border: none;
+}
+
+.uploadBtn{
+    background: transparent;
+    border-radius: 6px;
+    border: 2px solid #8D74C5;
+    color: #c6c1d1;
+    font-size: 1em;
+    opacity:1;
+    padding: 13px 10px 13px 10px;
+    right:0;
+    margin-right: 1%
+}
+
+.uploadBtn:hover{
     color:#8D74C5;
     background: rgb(255, 241, 255);
     cursor: pointer;

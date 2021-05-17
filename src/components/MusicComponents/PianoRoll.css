@@ -32,8 +32,19 @@
     flex-direction: inherit;
     width:100%;
     height:100%;
-    overflow-y:scroll;
-    overflow-x: hidden;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.piano-roll-playhead{
+    width:5px;
+    height:50%;
+    left: 24.6%;
+    top: 27%;
+    background-color: red;
+    z-index:2;
+    position: absolute;
+
 }
 
 .piano-roll-row-container,
@@ -52,8 +63,8 @@
 
 .piano-roll-row-label{
     display: flex;
-    width:12em;
-    height:3em;
+    width:6em;
+    height:1.5em;
     align-items: center;
     justify-content: center;
     background-color: rgb(143, 143, 143);
@@ -76,14 +87,13 @@
 .piano-roll-cell{
     display: inline-block;
     flex-shrink: 0;
-    width:6em;
-    height: 3em;
+    width:3em;
+    height: 1.5em;
     background-color: rgb(68, 68, 68);
     margin:0 0 1px 1px;
     cursor: pointer;
     color:white;
 }
-
 
 .piano-roll-cell:hover{
     opacity: 0.8 !important;
@@ -91,6 +101,7 @@
 
 .piano-roll-col-label{
     position: sticky;
+    top: 0px;
     background-color:rgb(49, 49, 49);
     display: flex;
     align-items: center;
