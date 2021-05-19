@@ -4,7 +4,7 @@
     top: 0;
     width: 100vw;
     position: absolute;
-    z-index: 10;
+    z-index: 15;
     align-items: center;
     display: flex;
     flex-direction: row
@@ -56,6 +56,27 @@
 }
 
 .bpmBtn:hover{
+    color:#8D74C5;
+    background: rgb(255, 241, 255);
+    cursor: pointer;
+    border: none;
+}
+
+.bpmBtn10{
+    background: transparent;
+    border-radius: 6px;
+    border: 2px solid #8D74C5;
+    color: #8D74C5;
+    font-family: monospace;
+    font-size: 1.2em;
+    margin-right: .3em;
+    margin-left: .3em; 
+    opacity: 1;
+    height: 1.7em;
+    width: 2.5em;
+}
+
+.bpmBtn10:hover{
     color:#8D74C5;
     background: rgb(255, 241, 255);
     cursor: pointer;

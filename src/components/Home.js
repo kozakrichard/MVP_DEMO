@@ -16,6 +16,20 @@ const Home = () => {
     const [BPM, setBPM] = useState(75);
 
 
+    const handleIncrement10 = () => {
+        if (BPM < 190) {
+            setBPM(BPM => BPM + 10)
+            console.log({ BPM })
+        }
+    }
+
+    const handleDecrement10 = () => {
+        if (BPM > 10) {
+            setBPM(BPM => BPM - 10)
+            console.log({ BPM })
+        }
+    }
+
 
     const handleIncrement = () => {
         if (BPM < 200) {
@@ -23,6 +37,7 @@ const Home = () => {
             console.log({ BPM })
         }
     }
+
     const handleDecrement = () => {
         if (BPM > 0) {
             setBPM(BPM => BPM - 1)
@@ -74,7 +89,8 @@ const Home = () => {
 
     return (
         <>
-            <Nav increment={handleIncrement} decrement={handleDecrement} bpm={BPM} 
+            <Nav increment={handleIncrement} decrement={handleDecrement} 
+            increment10={handleIncrement10} decrement10={handleDecrement10} bpm={BPM} 
                 tog={updateToggle} play={isPlaying} setPlay={setIsPlaying} 
                 sendMitty={sendData}
             />
