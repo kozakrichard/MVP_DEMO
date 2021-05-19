@@ -3,6 +3,9 @@ import { Song, Track, Instrument } from 'reactronica';
 import './PianoRoll.css';
 import axios from 'axios';
 import {useForm} from 'react-hook-form';
+import * as Tone from 'tone';
+import { Midi } from '@tonejs/midi';
+
 
 export default function PianoRoll(props) {
 
@@ -53,9 +56,50 @@ export default function PianoRoll(props) {
         localStorage.setItem('CURRENT_STEPS', JSON.stringify(steps.current));
     };
 
-    const handleRandom = () => {
+    const acceptMidi = async() => {
         handleClear();
-        const randoms = document.querySelectorAll('div.piano-roll-cell');
+        const data = await axios.get(`/nigel`, 
+        {responseType: 'arraybuffer', transformResponse: [v => v]})
+            .then(function (response) {
+                //setSample(response.data);
+                let file = response.data;
+                let midi = new Midi(file);
+                fillGridWithMidi(midi);
+                
+                console.log(file);
+                let reader = new FileReader();
+                reader.onload = () => {
+                    //let midi = new Midi(reader.result);
+                    console.log("filling grid...");
+
+                    
+                }
+               // reader.readAsArrayBuffer(file);
+            })
+
+        };        
+
+        const fillGridWithMidi = async(midi) => {
+            const synths = [];
+            const now = Tone.now() + 0.5;
+            midi.tracks.forEach(track => {
+                const synth = new Tone.PolySynth(10, Tone.Synth, {
+                    envelope: {
+                        attack: 0.02,
+                        decay: 0.1,
+                        sustain: 0.3,
+                        release: 1
+                    }
+                }).toMaster();
+                synths.push(synth);
+                track.notes.forEach(note => {
+                    synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity);
+                });
+            });
+        };
+
+
+/*        const randoms = document.querySelectorAll('div.piano-roll-cell');
         let col = 0;
         let row = 0;
         for (let i = 0; i < randoms.length; i++) {
@@ -92,6 +136,7 @@ export default function PianoRoll(props) {
         console.log(`randomize: ${steps.current[0]}`);
         localStorage.setItem('CURRENT_STEPS', JSON.stringify(steps.current));
     };
+*/
 
     const decrementColumn = () =>{
         props.setPlay(false);
@@ -347,14 +392,14 @@ export default function PianoRoll(props) {
                     </div>
 
                     <button class="btn" onClick={handleClear}>Clear</button>
-                    <button class="btn" onClick={handleRandom}>Generate</button>
-                     <button onClick={decrementColumn}> 
+                    <button class="btn" onClick={acceptMidi}>Generate</button>
+                    {/* <button onClick={decrementColumn}> 
                             remove column
                         </button>
                         <button onClick={incrementColumn}> 
                             add column
                         </button>
-                    {/* <button onClick={() => setIsPlaying(!isPlaying)}>
+                     <button onClick={() => setIsPlaying(!isPlaying)}>
                             {!isPlaying ? 'Play' : 'Stop'}
                         </button> */}
                 </div>

@@ -68,41 +68,6 @@ const Home = () => {
             });
     };
 
-    const uploadData = async (e) => {
-        let inputBtn = document.getElementById("uploadMidiInput");
-        inputBtn.addEventListener("change", midiFileToJSON);
-        inputBtn.click();
-    };
-  
-    const midiFileToJSON = async(e) => {
-        let file = e.target.files[0];
-        let reader = new FileReader();
-        reader.onload = () => {
-            let midi = new Midi(reader.result);
-            console.log("filling grid...");
-            fillGridWithMidi(midi);
-        }
-        reader.readAsArrayBuffer(file);
-    };
-  
-    const fillGridWithMidi = async(midi) => {
-        const synths = [];
-        const now = Tone.now() + 0.5;
-        midi.tracks.forEach(track => {
-            const synth = new Tone.PolySynth(10, Tone.Synth, {
-                envelope: {
-                    attack: 0.02,
-                    decay: 0.1,
-                    sustain: 0.3,
-                    release: 1
-                }
-            }).toMaster();
-            synths.push(synth);
-            track.notes.forEach(note => {
-                synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity);
-            });
-        });
-    };
 
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -111,7 +76,7 @@ const Home = () => {
         <>
             <Nav increment={handleIncrement} decrement={handleDecrement} bpm={BPM} 
                 tog={updateToggle} play={isPlaying} setPlay={setIsPlaying} 
-                sendMitty={sendData} uploadMitty={uploadData}
+                sendMitty={sendData}
             />
             <NavSide handleVol={handleVolume} vol={volume} handlePan={handlePan} pan={pan} />
             <div className='Container'>
