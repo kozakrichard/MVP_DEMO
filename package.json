@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tonejs/midi": "github:tonejs/midi",
+    "@tonejs/midi": "^2.0.27",
     "axios": "^0.21.1",
     "rc-slider": "^9.7.2",
     "react": "^17.0.2",
