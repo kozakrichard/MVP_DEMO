@@ -8,7 +8,7 @@ import axios from 'axios';
 import Video from './Video.js';
 import MenuRight from './Menu/MenuRight.js';
 import * as Tone from 'tone';
-//import { Midi } from '@tonejs/midi';
+import { Midi } from '@tonejs/midi';
 
 
 const Home = () => {
@@ -67,7 +67,7 @@ const Home = () => {
                 // a.click(); // triggering it manually
             });
     };
-/*
+
     const uploadData = async (e) => {
         let inputBtn = document.getElementById("uploadMidiInput");
         inputBtn.addEventListener("change", midiFileToJSON);
@@ -103,7 +103,7 @@ const Home = () => {
             });
         });
     };
-*/
+
     const [isPlaying, setIsPlaying] = useState(false);
 
 
@@ -111,7 +111,7 @@ const Home = () => {
         <>
             <Nav increment={handleIncrement} decrement={handleDecrement} bpm={BPM} 
                 tog={updateToggle} play={isPlaying} setPlay={setIsPlaying} 
-                sendMitty={sendData} //uploadMitty={uploadData}
+                sendMitty={sendData} uploadMitty={uploadData}
             />
             <NavSide handleVol={handleVolume} vol={volume} handlePan={handlePan} pan={pan} />
             <div className='Container'>
