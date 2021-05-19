@@ -280,6 +280,8 @@ export default function PianoRoll(props) {
             //playhead.style.left=(parseInt(playhead.style.left) + 1) + "%";
             playhead.style.left = parseInt(left_dist) + 49 + "px";
             console.log("after " + playhead.style.left);
+
+            
         }
     }
     )
