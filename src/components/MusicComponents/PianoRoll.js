@@ -58,6 +58,7 @@ export default function PianoRoll(props) {
 
     const acceptMidi = async() => {
         handleClear();
+        /*
         const data = await axios.get(`/nigel`, 
         {responseType: 'arraybuffer', transformResponse: [v => v]})
             .then(function (response) {
@@ -97,9 +98,9 @@ export default function PianoRoll(props) {
                 });
             });
         };
+    */
 
-
-/*        const randoms = document.querySelectorAll('div.piano-roll-cell');
+        const randoms = document.querySelectorAll('div.piano-roll-cell');
         let col = 0;
         let row = 0;
         for (let i = 0; i < randoms.length; i++) {
@@ -136,7 +137,7 @@ export default function PianoRoll(props) {
         console.log(`randomize: ${steps.current[0]}`);
         localStorage.setItem('CURRENT_STEPS', JSON.stringify(steps.current));
     };
-*/
+
 
     const decrementColumn = () =>{
         props.setPlay(false);
@@ -280,6 +281,8 @@ export default function PianoRoll(props) {
             //playhead.style.left=(parseInt(playhead.style.left) + 1) + "%";
             playhead.style.left = parseInt(left_dist) + 49 + "px";
             console.log("after " + playhead.style.left);
+
+            
         }
     }
     )
@@ -392,7 +395,7 @@ export default function PianoRoll(props) {
                     </div>
 
                     <button class="btn" onClick={handleClear}>Clear</button>
-                    <button class="btn" onClick={acceptMidi}>Generate</button>
+                    <button class="btn" onClick={acceptMidi}>Randomize</button>
                     {/* <button onClick={decrementColumn}> 
                             remove column
                         </button>

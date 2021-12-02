@@ -62,10 +62,10 @@ def send_sample():
     return "{Processed: true}"
 
 
-@app.route('/download')
+@app.route('/nigel')
 def serve_static(filename):
     # print("sdfasdfdjansfjnsf")
-    return send_file("/Users/nigel/Documents/GitHub/test/backend/test.txt")
+    return send_file("GET THE FILE FROM MODEL HERE")
 
 
 if __name__ == "__main__":

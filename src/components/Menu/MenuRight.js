@@ -22,6 +22,7 @@ const MenuRight = () =>{
 
     const [menuCollapse, setMenuCollapse] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
+    const [showMessage2, setShowMessage2] = useState(false);
 
     const menuIconClick = () => {
         menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
@@ -51,9 +52,9 @@ const MenuRight = () =>{
                 </SidebarHeader>
                 <SidebarContent>
                     <Menu iconShape="square">
-                        <MenuItem active={true} icon={<FiHeadphones />}>
+                        {/*<MenuItem active={true} icon={<FiHeadphones />}>
                             Home <Link to= "/"/>
-                        </MenuItem>
+                        </MenuItem>*/}
                         <div class= "collab-btn">
                             <MenuItem icon={<FiUsers />}
                                 onMouseEnter={() => setShowMessage(true)}
@@ -66,18 +67,27 @@ const MenuRight = () =>{
                                 </div>
                                 )}
                         </div>
-                        <MenuItem icon={<AiFillGithub />}>
-                            GitHub <Link to="/github"/>
-                        </MenuItem>
-                        <MenuItem icon={<FaRegHeart />}>
+                        <div class= "github-btn">
+                            <MenuItem icon={<AiFillGithub />}
+                                onMouseEnter={() => setShowMessage2(true)}
+                                onMouseLeave ={() => setShowMessage2(false)}>
+                                GitHub <Link to="/github"/>
+                            </MenuItem>
+                            {showMessage2 && (
+                                <div>
+                                    Go to Nightingale's Github
+                                </div>
+                                )}
+                        </div>
+                        {/*<MenuItem icon={<FaRegHeart />}>
                             About <Link to="/about"/>
-                        </MenuItem>
+                            </MenuItem>*/}
                     </Menu>
                 </SidebarContent>
             </ProSidebar>
                 <Switch>
                     <Route path='/github' component={() => { 
-                        window.location.href = ('https://github.com/nightingale-ai/MVP_DEMO'); 
+                        window.location.href = ('https://github.com/kozakrichard/MVP_DEMO'); 
                         return null;
                     }}/>
                     <Route path="/about">

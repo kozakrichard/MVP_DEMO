@@ -36,7 +36,7 @@
     overflow-y: scroll;
     overflow-x: scroll;
 }
-
+/*
 .piano-roll-playhead{
     width:5px;
     height:50%;
@@ -46,7 +46,7 @@
     z-index:2;
     position: absolute;
 
-}
+}*/
 
 .piano-roll-row-container,
 .piano-roll-col-container{
@@ -65,7 +65,7 @@
 .piano-roll-row-label{
     display: flex;
     width:6em;
-    height:1.5em;
+    height:2em;
     align-items: center;
     justify-content: center;
     background-color: rgb(143, 143, 143);
@@ -88,8 +88,8 @@
 .piano-roll-cell{
     display: inline-block;
     flex-shrink: 0;
-    width:3em;
-    height: 1.5em;
+    width:4em;
+    height: 2em;
     background-color: rgb(68, 68, 68);
     margin:0 0 1px 1px;
     cursor: pointer;
