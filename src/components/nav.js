@@ -30,7 +30,7 @@ const Nav = (props) => {
                     <button onClick={props.increment} className="bpmBtn">+</button>
                     <button onClick={props.increment10} className="bpmBtn10">+10</button>
                 </div>
-                <button className="generateBtn" onClick={props.sendMitty}>Download</button>
+                {/*<button className="generateBtn" onClick={props.sendMitty}>Download</button>*/}
             </div>
         </>
     )
