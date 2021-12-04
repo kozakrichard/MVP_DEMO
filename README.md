@@ -1,3 +1,8 @@
+Welcome to the Nightinale repo. Nightingale is a way to make quick, easy music beats straight from your browser. 
+Nightingale uses a React frontend, and utilizes the ToneJS audio framework for the actual music production.
+More features coming along slowly.
+Note: To use the collaboration feature in the browser, site settings must be changed to allow an "insecure" connection to the site.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
